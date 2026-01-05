@@ -1,13 +1,17 @@
 FROM php:8.2-apache
 
-# Enable Apache rewrite (good practice)
+# Enable Apache rewrite
 RUN a2enmod rewrite
 
-# Set working directory
-WORKDIR /var/www/html
+# Set Apache document root to /public
+ENV APACHE_DOCUMENT_ROOT=/var/www/html/public
 
-# Copy everything
+RUN sed -ri 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' \
+    /etc/apache2/sites-available/*.conf \
+    /etc/apache2/apache2.conf
+
+# Copy project files
 COPY . /var/www/html
 
-# Fix permissions (optional but safe)
+# Fix permissions
 RUN chown -R www-data:www-data /var/www/html
