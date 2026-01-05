@@ -32,9 +32,11 @@
 
         <!-- RIGHT - CONTENTS -->
         <div class="two_sub_divs right_main_div">
+
             <div class="main_sections odd_content" id="section1">
-                Introduction
+                <a href="includes/download.php" class="download-cv-link">Download my CV</a>
             </div>
+
             <?php include_once('divs/section-2.php'); ?>
             <?php include_once('divs/section-3.php'); ?>
             <?php include_once('divs/section-4.php'); ?>

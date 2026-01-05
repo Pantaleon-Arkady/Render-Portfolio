@@ -93,6 +93,38 @@ body:has(#section5:target) .section_links[href="#section5"] {
     overflow-y: auto;
 }
 
+/* DOWNLOAD CV LINK STYLING */
+.download-cv-link {
+    display: inline-block;
+    padding: 14px 28px;
+    margin: 40px 20px;                  /* Space around the button */
+    background-color: rgb(4, 12, 36);    /* Dark blue background (matches your body bg) */
+    color: white;
+    font-weight: 700;                   /* Bold like headings */
+    font-size: 1.1rem;
+    text-decoration: none;
+    border-radius: 8px;
+    border: 3px solid transparent;
+    transition: 
+        background-color 0.3s ease,
+        color 0.3s ease,
+        border-color 0.3s ease,
+        transform 0.15s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.download-cv-link:hover {
+    background-color: #ffdd57;          /* Your accent yellow from nav hover */
+    color: rgb(4, 12, 36);               /* Dark text on yellow */
+    border-color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.download-cv-link:active {
+    transform: translateY(0);
+}
+
 .main_sections {
     min-height: 658px;
     flex-shrink: 0;
