@@ -41,7 +41,6 @@
             <?php include_once('divs/section-3.php'); ?>
             <?php include_once('divs/section-4.php'); ?>
             <div class="main_sections odd_content" id="section5">
-                Footer
             </div>
         </div>
 
