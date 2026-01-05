@@ -1,0 +1,372 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: rgb(4, 12, 36);
+}
+
+* {
+    color: black;
+    font-family: 'Space Mono', monospace;
+    box-sizing: border-box;
+}
+
+.two_main_divs {
+    min-height: 50px;
+    width: 100%;
+}
+
+.header_div {
+    /* border: 2px solid white; */
+    position: fixed;
+    overflow: hidden;
+    z-index: 10;
+    height: 90px;
+    color: white;
+    padding: 10px;
+}
+
+.main_div_content {
+    position: fixed;
+    top: 90px;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 90px);
+    display: flex;
+}
+
+/* .two_sub_divs {
+    border: 2px solid white;
+    min-height: 660px;
+} */
+
+.left_main_div {
+    width: 20%;
+    height: 100%;
+    background-color: rgb(58, 76, 122);
+    padding: 20px;
+    display: flex;
+    flex-flow: column;
+}
+
+/* NAV LINKS */
+.section_links {
+    display: block;
+    text-decoration: none;
+    color: white;
+    padding: 12px 10px;
+    margin-bottom: 6px;
+    border-radius: 6px;
+    transition: 
+        background-color 0.2s ease,
+        color 0.2s ease,
+        transform 0.15s ease;
+}
+
+/* NAV LINKS HOVER */
+.section_links:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    color: #ffdd57;
+    transform: translateX(4px);
+}
+
+.left_main_div a {
+    border: 3px solid transparent;
+}
+
+body:has(#section1:target) .section_links[href="#section1"],
+body:has(#section2:target) .section_links[href="#section2"],
+body:has(#section3:target) .section_links[href="#section3"],
+body:has(#section4:target) .section_links[href="#section4"],
+body:has(#section5:target) .section_links[href="#section5"] {
+    border: 3px solid white;
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* MAIN CONTENT PART */
+
+.right_main_div {
+    width: 80%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.main_sections {
+    min-height: 658px;
+    flex-shrink: 0;
+    /* border: 1px solid white; */
+    padding: 20px;
+}
+
+.odd_content {
+    background-color: white;
+}
+
+.even_content {
+    background-color: rgb(157, 165, 189);
+}
+
+/* ROW */
+.cards-row {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding-top: 40px;
+}
+
+/* CARD */
+.product-card {
+    position: relative;
+    width: 320px;
+    height: 520px; /* portrait */
+    border-radius: 16px;
+    overflow: hidden;
+    background-color: rgb(4, 12, 36);
+    cursor: pointer;
+}
+
+/* IMAGE */
+.product-image {
+    width: 100%;
+    height: 100%;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* INFO BAR */
+.product-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 110px;
+    background: rgba(4, 12, 36, 0.95);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    transition: height 0.4s ease;
+}
+
+/* TEXT */
+.product-info h3 {
+    color: white;
+    margin: 0;
+    font-size: 1.3rem;
+}
+
+/* BUTTON */
+.product-info button {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* HOVER EFFECT */
+.product-card:hover .product-info {
+    height: 200px;
+}
+
+.product-card:hover .product-info button {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* PROJECT LIGHTBOX */
+
+.project-modal {
+    display: none;
+    position: fixed;
+    width: 100%;
+    min-height: 800px;
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.flex-div {
+    display: flex;
+    flex-flow: column;
+}
+
+.close-project-div {
+    display: flex;
+    justify-content: end;
+}
+
+.close {
+    all: unset;
+    color: white;
+    font-weight: bold;
+    font-size: 35px;
+    margin: 5px 15px;
+}
+
+/* PROJECT LIGHTBOX - MODAL CONTENT */
+.modal-content {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    overflow: hidden;
+}
+
+/* Hide all slides by default, show only first (or use JS slider later) */
+.each-slide {
+    display: none;
+    width: 100%;
+    text-align: center;
+}
+
+.each-slide:first-child {
+    display: block;
+}
+
+/* Common image styling */
+.each-slide img {
+    max-height: 85vh;
+    max-width: 95vw;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+}
+
+/* ORIENTATION-SPECIFIC ADJUSTMENTS */
+.each-slide.landscape img {
+    max-width: 95vw;
+    max-height: 80vh;           /* Limit height more for wide images */
+}
+
+.each-slide.portrait img {
+    max-width: 70vw;            /* Narrower for tall images */
+    max-height: 90vh;           /* Allow more vertical space */
+}
+
+.each-slide.square img {
+    max-width: 80vw;
+    max-height: 80vh;
+}
+
+/* Slide number styling */
+.slide-number {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 1rem;
+    z-index: 11;
+}
+
+/* Better centering for all orientations */
+.flex-div {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: center;
+}
+
+.project-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.92);
+    z-index: 1000;
+    overflow-y: auto;
+}
+
+/* Navigation arrows */
+.nav-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    font-size: 48px;
+    width: 60px;
+    height: 100px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s ease;
+    user-select: none;
+}
+
+.nav-arrow:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.prev-arrow {
+    left: 20px;
+}
+
+.next-arrow {
+    right: 20px;
+}
+
+@media (max-width: 700px) {
+    /* .header_div {
+        background-color: green;
+    } */
+
+    .left_main_div {
+        display: none;
+    }
+
+    .right_main_div {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .main_sections {
+        min-height: 400px;
+        margin: 50px 30px;
+    }
+
+    .cards-row {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .product-card {
+        width: 100%;
+        max-width: 340px;
+    }
+
+    .nav-arrow {
+        width: 50px;
+        height: 80px;
+        font-size: 36px;
+    }
+    
+    .prev-arrow { left: 10px; }
+    .next-arrow { right: 10px; }
+}
