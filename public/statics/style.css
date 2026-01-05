@@ -132,6 +132,10 @@ body:has(#section5:target) .section_links[href="#section5"] {
     padding: 20px;
 }
 
+#section1 {
+    height: 250px;
+}
+
 .odd_content {
     background-color: white;
 }
