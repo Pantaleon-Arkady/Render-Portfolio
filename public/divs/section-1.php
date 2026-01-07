@@ -29,7 +29,7 @@
                         w-full
                         whitespace-nowrap
                         rounded-lg px-8 py-4
-                        text-md font-semibold
+                        text-xs sm:text-sm font-semibold
                         bg-[#040c24] text-white
                         hover:bg-gray-900/30
                         transition-colors"
@@ -45,7 +45,7 @@
                         w-full
                         whitespace-nowrap
                         rounded-lg px-8 py-4
-                        text-md font-semibold
+                        text-xs sm:text-sm font-semibold
                         bg-[#040c24] text-white
                         hover:bg-gray-900/30
                         transition-colors"
