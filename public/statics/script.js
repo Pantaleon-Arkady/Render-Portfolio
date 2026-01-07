@@ -1,23 +1,26 @@
 function openProject(modalId) {
-    document.getElementById(modalId).style.display = "block";
-
     const modal = document.getElementById(modalId);
+
+    modal.classList.remove('hidden');
+
     const slides = modal.querySelectorAll('.each-slide');
 
     slides.forEach((slide, i) => {
-        slide.style.display = i === 0 ? 'block' : 'none';
+        slide.classList.toggle('hidden', i !== 0);
     });
 
     modal.currentSlideIndex = 0;
     modal.slides = slides;
 }
 
+
 function closeProject(modalId) {
-    document.getElementById(modalId).style.display = "none";
+    const modal = document.getElementById(modalId);
+    modal.classList.add('hidden');
 }
 
 function changeSlide(direction) {
-    const openModal = document.querySelector('.project-modal[style*="block"]');
+    const openModal = document.querySelector('[id^="modal-project-"]:not(.hidden)');
     if (!openModal) return;
 
     const slides = openModal.slides;
@@ -29,7 +32,7 @@ function changeSlide(direction) {
     if (newIndex >= slides.length) newIndex = 0;
 
     slides.forEach((slide, i) => {
-        slide.style.display = i === newIndex ? 'block' : 'none';
+        slide.classList.toggle('hidden', i !== newIndex);
     });
 
     openModal.currentSlideIndex = newIndex;
@@ -74,3 +77,38 @@ function openProjectFive() {
 function closeProjectFive() {
     closeProject('modal-project-five');
 }
+
+// Script for manual scroll header follow
+
+const scrollContainer = document.querySelector('.overflow-y-auto');
+const sections = document.querySelectorAll('[data-section]');
+const navLinks = document.querySelectorAll('.section_links');
+
+const observer = new IntersectionObserver(
+(entries) => {
+    entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+
+    const id = entry.target.id;
+
+    navLinks.forEach(link => {
+        link.classList.remove('bg-white/15', 'text-white', 'scale-105');
+    });
+
+    const activeLink = document.querySelector(
+        `.section_links[href="#${id}"]`
+    );
+
+    if (activeLink) {
+        activeLink.classList.add('bg-white/15', 'text-white', 'scale-105');
+    }
+    });
+},
+{
+    root: scrollContainer,     // IMPORTANT: your scroll div
+    threshold: 0.6             // 60% of section visible
+}
+);
+
+sections.forEach(section => observer.observe(section));
+

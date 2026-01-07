@@ -7,44 +7,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="files/myicon.png">
     <title>Portfolio</title>
-    <link href="statics/style.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes float {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
 </head>
-
+<!--  -->
 <body>
     <!-- HEADER -->
-    <div class="two_main_divs header_div">
-    </div>
+    <header class="fixed top-0 left-0 w-full h-[90px] bg-[#040c24] flex items-center justify-center z-50">
+    <nav class="flex gap-6">
+        <a
+            href="#section1"
+            class="section_links inline-flex h-10 w-max items-center justify-center
+                rounded-md px-4 py-2 text-sm font-medium
+                text-gray-400
+                transition-all duration-300 ease-out
+                hover:bg-white/15 hover:text-white
+                focus:outline-none focus:bg-white/15 focus:text-white
+                active:scale-95">
+            Home
+        </a>
+        <a
+            href="#section-project"
+            class="section_links inline-flex h-10 w-max items-center justify-center
+                rounded-md px-4 py-2 text-sm font-medium
+                text-gray-400
+                transition-all duration-300 ease-out
+                hover:bg-white/15 hover:text-white
+                focus:outline-none focus:bg-white/15 focus:text-white
+                active:scale-95">
+            Projects
+        </a>
+    </nav>
+</header>
+
 
     <!-- MAIN -->
-    <div class="two_main_divs main_div_content">
+    <main class="h-screen overflow-hidden">
 
-        <!-- LEFT -->
-        <div class="two_sub_divs left_main_div">
-            <a href="#section1" class="section_links">Introduction</a>
-            <a href="#section2" class="section_links">Projects 1-2</a>
-            <a href="#section3" class="section_links">Projects 3-4</a>
-            <a href="#section4" class="section_links">Project 5</a>
-            <a href="#section5" class="section_links">...</a>
+        <div class="h-full overflow-y-auto scroll-smooth">
+
+            <?php include_once('divs/section-1.php'); ?>
+            <?php include_once('divs/section-project.php'); ?>
         </div>
 
-        <!-- RIGHT - CONTENTS -->
-        <div class="two_sub_divs right_main_div">
-
-            <div class="main_sections odd_content" id="section1">
-                <a href="includes/download.php" class="download-cv-link">Download my CV</a>
-            </div>
-
-            <?php include_once('divs/section-2.php'); ?>
-            <?php include_once('divs/section-3.php'); ?>
-            <?php include_once('divs/section-4.php'); ?>
-            <div class="main_sections odd_content" id="section5">
-            </div>
-        </div>
-
-    </div>
+    </main>
 
     <!-- Light Box -->
     <?php include_once('modals/modal-project-one.php') ?>
@@ -53,6 +68,8 @@
     <?php include_once('modals/modal-project-four.php') ?>
     <?php include_once('modals/modal-project-five.php') ?>
     <script src="statics/script.js"></script>
+    
+
 </body>
 
 </html>

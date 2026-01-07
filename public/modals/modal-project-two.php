@@ -1,4 +1,4 @@
-<div id="modal-project-two" class="project-modal">
+<div id="modal-project-two" class="project-modal" style="display: none;">
     <div class="flex-div">
         <div class="close-project-div">
             <button class="close cursor" onclick="closeProjectTwo()">&times;</button>
